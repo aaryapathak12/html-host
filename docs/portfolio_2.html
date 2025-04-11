@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam Altman - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    function toggleDarkMode() {
+      if (localStorage.getItem('color-theme')) {
+        if (localStorage.getItem('color-theme') === 'light') {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('color-theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('color-theme', 'light');
+        }
+      } else {
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('color-theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('color-theme', 'dark');
+        }
+      }
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100">
+  <button
+    id="theme-toggle"
+    type="button"
+    class="fixed top-4 right-4 z-50 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+    onclick="toggleDarkMode()"
+  >
+    <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+    </svg>
+    <svg id="theme-toggle-light-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zM10 18a1 1 0 011-1v-1a1 1 0 112 0v1a1 1 0 01-1 1zM2 10a1 1 0 011-1h1a1 1 0 110 2H3a1 1 0 01-1-1zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1z"/>
+    </svg>
+  </button>
+
+  <div class="container mx-auto p-8">
+    <div class="relative mx-auto w-48 h-48 overflow-hidden rounded-full border-4 border-primary-500 dark:border-primary-400 shadow-xl mb-6">
+      <img src="/images/profile.png" alt="Profile Photo" class="absolute inset-0 w-full h-full object-cover" />
+    </div>
+    <h1 class="text-4xl font-bold mb-4">Sam Altman</h1>
+    <p class="text-lg mb-6">Experienced technology executive and entrepreneur with extensive expertise in artificial intelligence, startup investments, and company scaling. Currently serving as the Chief Executive Officer of OpenAI, focusing on advancing artificial general intelligence (AGI) that benefits humanity. Previously led Y Combinator, transforming it into the world's premier startup accelerator.</p>
+
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Contact</h2>
+        <p>Email: placeholder@email.com</p>
+        <p>LinkedIn: <a href="linkedin.com/in/samaltman" class="text-primary-500 hover:underline" target="_blank">linkedin.com/in/samaltman</a></p>
+        <p>Twitter: <a href="https://twitter.com/sama" class="text-primary-500 hover:underline" target="_blank">@sama</a></p>
+    </div>
+
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Experience</h2>
+        <div class="mb-4">
+            <h3 class="font-bold">OpenAI</h3>
+            <p class="text-gray-600 dark:text-gray-400">Chief Executive Officer | 2019 - Present</p>
+            <ul class="list-disc list-inside ml-6">
+                <li>Leading the company's mission to ensure artificial general intelligence benefits all of humanity</li>
+                <li>Oversaw the development and launch of GPT-4, ChatGPT, DALL-E, and other breakthrough AI systems</li>
+                <li>Secured strategic partnerships with Microsoft and other organizations</li>
+                <li>Guided the company through significant growth periods and funding rounds</li>
+                <li>Championed responsible AI development and deployment</li>
+            </ul>
+        </div>
+        <div class="mb-4">
+            <h3 class="font-bold">Y Combinator</h3>
+            <p class="text-gray-600 dark:text-gray-400">President | 2014 - 2019</p>
+            <ul class="list-disc list-inside ml-6">
+                <li>Led the world's most successful startup accelerator, dramatically expanding its global impact</li>
+                <li>Invested in and advised hundreds of early-stage companies, many now valued at over $1 billion</li>
+                <li>Innovated YC's curriculum and programming to better serve founders</li>
+                <li>Launched YC Continuity Fund to support companies beyond the initial accelerator program</li>
+                <li>Created initiatives to fund more diverse founders and startups targeting important global problems</li>
+            </ul>
+        </div>
+        <div class="mb-4">
+            <h3 class="font-bold">Y Combinator</h3>
+            <p class="text-gray-600 dark:text-gray-400">Partner | 2011 - 2014</p>
+            <ul class="list-disc list-inside ml-6">
+                <li>Mentored startup founders through YC's accelerator program</li>
+                <li>Evaluated potential investments and conducted due diligence</li>
+            </ul>
+        </div>
+        <div class="mb-4">
+            <h3 class="font-bold">Loopt</h3>
+            <p class="text-gray-600 dark:text-gray-400">Co-Founder and CEO | 2005 - 2012</p>
+            <ul class="list-disc list-inside ml-6">
+                <li>Founded location-based social networking mobile application</li>
+                <li>Raised over $30 million in venture capital funding</li>
+                <li>Grew the company to millions of users</li>
+                <li>Successfully sold the company to Green Dot Corporation for $43.4 million</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Education</h2>
+        <p>Stanford University, Computer Science, 2005 (Left before completing degree to found Loopt)</p>
+    </div>
+
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Other</h2>
+        <p>Investments & Board Positions: Investor in numerous successful technology companies including Airbnb, Stripe, Reddit, and Pinterest. Board member for various technology companies and non-profit organizations.</p>
+        <p>Publications: Various essays on startups, technology, and society on personal blog. Co-author of the "Startup Playbook".</p>
+        <p>Speaking & Thought Leadership: Regular speaker at major technology conferences including TechCrunch Disrupt, Web Summit, and SXSW. Expertise in artificial intelligence, startup scaling, and technology's impact on society.</p>
+        <p>Skills: Artificial Intelligence Strategy, Business Leadership, Startup Investment, Product Development, Strategic Partnerships, Company Scaling, Public Speaking, Technical Vision</p>
+    </div>
+
+  </div>
+</body>
+</html>
