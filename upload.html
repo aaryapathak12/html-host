@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Portfolio Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f9fafb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-white rounded-lg shadow-xl overflow-hidden">
+            <div class="text-center p-6 bg-blue-600 text-white">
+                <h1 class="text-2xl font-bold">PDF Resume to Portfolio Converter</h1>
+                <p class="mt-2 text-blue-100">Upload your resume and get a beautiful portfolio website</p>
+            </div>
+            <div class="p-6">
+                {% if error %}
+                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4">
+                    <p>{{ error }}</p>
+                </div>
+                {% endif %}
+                
+                <form method="POST" enctype="multipart/form-data" class="space-y-6">
+                    <div class="relative border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                        <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" 
+                            class="absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                        <div class="space-y-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                            </svg>
+                            <div class="text-sm text-gray-600">
+                                <label for="pdf_file" class="font-medium text-blue-600 hover:underline">
+                                    Click to upload
+                                </label>
+                                <span> or drag and drop</span>
+                            </div>
+                            <p class="text-xs text-gray-500">PDF up to 16MB</p>
+                        </div>
+                        <div id="file-name" class="mt-2 text-sm text-gray-500 hidden"></div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200">
+                        Convert to Portfolio
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center text-sm text-gray-500">
+                    <p>Your portfolio will be generated with AI and deployed to GitHub Pages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('pdf_file');
+        const fileNameDisplay = document.getElementById('file-name');
+        
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                fileNameDisplay.textContent = `Selected file: ${e.target.files[0].name}`;
+                fileNameDisplay.classList.remove('hidden');
+            } else {
+                fileNameDisplay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
