@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Generated Successfully</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f9fafb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-white rounded-lg shadow-xl overflow-hidden">
+            <div class="p-6 sm:p-8">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Portfolio Published!</h2>
+                    <div class="text-green-500 mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 mb-4">Your portfolio has been successfully generated and deployed!</p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4 bg-gray-50 mb-6">
+                    <p class="text-sm text-gray-500 mb-2">Your portfolio is live at:</p>
+                    <div class="flex items-center">
+                        <input type="text" id="deployed-url" value="{{ deployed_url }}" readonly 
+                            class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm focus:outline-none focus:border-blue-500">
+                        <button onclick="copyToClipboard()" class="ml-2 px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
+                                <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 010 2h-2v-2z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p id="copy-message" class="text-sm text-green-600 mt-1 hidden">URL copied to clipboard!</p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="{{ deployed_url }}" target="_blank" class="w-full sm:w-1/2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md text-center transition duration-200">
+                        View Portfolio
+                    </a>
+                    <a href="/" class="w-full sm:w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md text-center transition duration-200">
+                        Create Another
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const urlField = document.getElementById('deployed-url');
+            const copyMessage = document.getElementById('copy-message');
+            
+            urlField.select();
+            document.execCommand('copy');
+            
+            copyMessage.classList.remove('hidden');
+            
+            setTimeout(() => {
+                copyMessage.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
